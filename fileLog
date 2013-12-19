@@ -1,0 +1,27 @@
+2013-12-17 17:01:11 [Thread-0]-[INFO] Using Chrome
+2013-12-17 17:01:11 [Thread-1]-[INFO] Using Chrome
+2013-12-17 17:01:13 [Thread-1]-[INFO] Started BrowserEmulator
+2013-12-17 17:01:13 [Thread-0]-[INFO] Started BrowserEmulator
+2013-12-17 17:01:13 [Thread-1]-[ERROR] prop.properties (系统找不到指定的文件。)
+2013-12-17 17:01:22 [Thread-1]-[INFO] Opened url qa-lab.server.163.org
+2013-12-17 17:01:22 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:22 [Thread-0]-[INFO] Opened url qa-lab.server.163.org
+2013-12-17 17:01:22 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:23 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:23 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:23 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:23 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:24 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:24 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:24 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:24 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:25 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:25 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:25 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:25 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:26 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:26 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:26 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:26 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:27 [Thread-1]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
+2013-12-17 17:01:27 [Thread-0]-[INFO] Not found element//form[@id='login']/table[@class='icon_total bg_icon']/tbody/tr[2]/td[2]/strong
