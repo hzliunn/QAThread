@@ -29,9 +29,8 @@ public class Testing implements Runnable {
 			driver.findElement(By.xpath("//input[@id='password']")).sendKeys(
 					"sdfafeasdf");
 			driver.findElement(By.xpath("//input[@id='user_login']")).click();
-			// new issues
-			driver.get("http://qa-lab.163.org/issues/new_issues");
 			
+			driver.get("http://qa-lab.163.org/issues/new_issues");
 
 			driver.quit();
 
@@ -47,7 +46,7 @@ public class Testing implements Runnable {
 //		Runnable test = new Testing("localhost", 0);
 //		new Thread(test).start();
 		
-		Runnable test1 = new Testing("192.168.145.98", 100);
+		Runnable test1 = new Testing("10.241.20.87", 100);
 //		Runnable test2 = new Testing("192.168.145.101", 100);
 		// for (int i = 0; i < 9; i++) {
 		new Thread(test1).start();
