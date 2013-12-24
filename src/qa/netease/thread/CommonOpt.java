@@ -21,4 +21,9 @@ public class CommonOpt {
 		int index = (int) (Math.random() * Users.issueName.length);
 		return Users.issueName[index];
 	}
+	
+	public static String getRandomCommentIssues() {
+		int index = (int) (Math.random() * Users.commentIssueName.length);
+		return Users.commentIssueName[index];
+	}
 }

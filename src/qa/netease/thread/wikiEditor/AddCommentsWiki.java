@@ -24,13 +24,13 @@ public class AddCommentsWiki implements Runnable {
 		try {
 			// initial the element to be verified
 			WebElement element = null;
-	        String user = CommonOpt.getRandomProjectMembers();
+			String user = CommonOpt.getRandomProjectMembers();
 			String password = "sdfafeasdf";
-	        String issue = CommonOpt.getRandomIssues();
-	        
-	        long time = System.currentTimeMillis();
+			String issue = CommonOpt.getRandomCommentIssues();
+
+			long time = System.currentTimeMillis();
 			String comment = "task_desc_" + issue + "_" + time;
-			
+
 			// open chrome
 			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 			RemoteWebDriver driver = new RemoteWebDriver(new URL("http://"
@@ -38,21 +38,24 @@ public class AddCommentsWiki implements Runnable {
 			// login
 			CommonOpt.login(driver, user, password);
 			driver.findElement(By.id("q")).sendKeys(issue);
-			driver.findElement(By.xpath("//div[@id='quick-search']/form/a")).click();
-			
-			for(String winHandle : driver.getWindowHandles()){
-			    driver.switchTo().window(winHandle);
+			driver.findElement(By.xpath("//div[@id='quick-search']/form/a"))
+					.click();
+
+			for (String winHandle : driver.getWindowHandles()) {
+				driver.switchTo().window(winHandle);
 			}
 			Thread.sleep(delay);
-			driver.findElement(By.xpath("//*[@id='search-results']/dt[1]/a")).click();
-			for(String winHandle : driver.getWindowHandles()){
-			    driver.switchTo().window(winHandle);
+			driver.findElement(By.xpath("//*[@id='search-results']/dt[1]/a"))
+					.click();
+			for (String winHandle : driver.getWindowHandles()) {
+				driver.switchTo().window(winHandle);
 			}
 			driver.findElement(By.xpath("//*[@id='history']/div[1]/a")).click();
 			driver.findElement(By.id("issues_notes_wiki_title")).click();
-			// driver.findElement(By.id("issues_notes_fck_title")).click();
+//			driver.findElement(By.id("issues_notes_fck_title")).click();
 			driver.findElement(By.id("notes")).sendKeys(comment);
-			driver.findElement(By.xpath("//*[@id='issue-form']/input[4]")).click();
+			driver.findElement(By.xpath("//*[@id='issue-form']/input[4]"))
+					.click();
 			Thread.sleep(delay);
 			element = driver.findElement(By.xpath("//*[@id='flash_msg']/div"));
 			Assert.assertEquals(element.getText(), "更新成功");
@@ -63,12 +66,17 @@ public class AddCommentsWiki implements Runnable {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 	}
 
 	public static void main(String args[]) {
-		Runnable test1 = new AddCommentsWiki("192.168.146.83", 10000);
+		Runnable test1 = new AddCommentsWiki("10.241.20.87", 1000);
+		Runnable test2 = new AddCommentsWiki("192.168.145.101", 100);
+		for (int i = 0; i < 8; i++) {
 			new Thread(test1).start();
+		}
+		for (int i = 0; i < 8; i++) {
+			new Thread(test2).start();
+		}
 	}
-
 }
