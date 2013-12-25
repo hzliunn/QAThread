@@ -78,19 +78,29 @@ public class NewIssuesWiki implements Runnable {
 				select.selectByVisibleText(" » " + Users.project);
 				Thread.sleep(10000);
 			}
-			driver.findElement(By.xpath("//input[@id='issue_subject']"))
-					.sendKeys(name);
+
 			// click wiki tab
 			driver.findElement(By.xpath("//a[@id='desc_wiki_title']")).click();
 			// click fck tab
 			// driver.findElement(By.xpath("//a[@id='desc_fck_title']")).click();
+			driver.findElement(By.xpath("//input[@id='issue_subject']"))
+					.sendKeys(name);
 			Thread.sleep(delay);
 			driver.findElement(By.xpath("//textarea[@id='issue_description']"))
 					.sendKeys(desc);
 			driver.findElement(By.xpath("//input[@id='add_issue_button']"))
 					.click();
-			element = driver
-					.findElement(By.xpath("//*[@id='content']/h2"));
+			if (CommonOpt.isElementPresent(driver,
+					"//*[@id='errorExplanation']")) {
+				driver.findElement(By.xpath("//input[@id='issue_subject']"))
+						.sendKeys(name);
+				driver.findElement(
+						By.xpath("//textarea[@id='issue_description']"))
+						.sendKeys(desc);
+				driver.findElement(By.xpath("//input[@id='add_issue_button']"))
+						.click();
+			}
+			element = driver.findElement(By.xpath("//*[@id='content']/h2"));
 			Assert.assertEquals(element.getText().contains(issue + " #"), true);
 
 			driver.quit();

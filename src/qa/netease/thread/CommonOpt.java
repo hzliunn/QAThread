@@ -1,6 +1,8 @@
 package qa.netease.thread;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class CommonOpt {
@@ -25,5 +27,17 @@ public class CommonOpt {
 	public static String getRandomCommentIssues() {
 		int index = (int) (Math.random() * Users.commentIssueName.length);
 		return Users.commentIssueName[index];
+	}
+	
+	public static boolean isElementPresent(RemoteWebDriver driver, String xpath) {
+		WebElement webElement = driver.findElement(By.xpath(xpath));
+		try {
+			if (webElement.isDisplayed()) {
+				return true;
+			}
+		} catch (ElementNotVisibleException e) {
+			return false;
+		}
+		return false;
 	}
 }
