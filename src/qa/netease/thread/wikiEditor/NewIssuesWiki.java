@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,11 +16,9 @@ import qa.netease.thread.Users;
 
 public class NewIssuesWiki implements Runnable {
 	private String localhost;
-	private int delay;
 
-	NewIssuesWiki(String localhostip, int delayTime) {
+	NewIssuesWiki(String localhostip) {
 		localhost = localhostip;
-		delay = delayTime;
 	}
 
 	public void run() {
@@ -45,7 +44,7 @@ public class NewIssuesWiki implements Runnable {
 			driver.get("http://qa-lab.163.org/issues/new_issues");
 			driver.findElement(By.xpath("//div[text()='" + issue + "']"))
 					.click();
-			Thread.sleep(delay);
+			Thread.sleep(5000);
 			element = driver.findElement(By.xpath("//div[@id='content']/h2"));
 			Assert.assertEquals(element.getText(), "新建" + issue);
 			// 安全任务不能新建
@@ -67,16 +66,13 @@ public class NewIssuesWiki implements Runnable {
 				Select select = new Select(driver.findElement(By
 						.id("project_id_test")));
 				select.selectByVisibleText(" » " + Users.project);
-				Thread.sleep(10000);
-				select = new Select(driver.findElement(By
-						.id("issue_test_version_id")));
-				select.selectByIndex(1);
+				Thread.sleep(5000);
 			}
 			if (issue == "需求变更") {
 				Select select = new Select(driver.findElement(By
 						.id("project_id_test")));
 				select.selectByVisibleText(" » " + Users.project);
-				Thread.sleep(10000);
+				Thread.sleep(1000);
 			}
 
 			// click wiki tab
@@ -85,21 +81,19 @@ public class NewIssuesWiki implements Runnable {
 			// driver.findElement(By.xpath("//a[@id='desc_fck_title']")).click();
 			driver.findElement(By.xpath("//input[@id='issue_subject']"))
 					.sendKeys(name);
-			Thread.sleep(delay);
 			driver.findElement(By.xpath("//textarea[@id='issue_description']"))
 					.sendKeys(desc);
+			if (issue == "BUG任务") {
+				Select select = new Select(driver.findElement(By
+						.id("issue_test_version_id")));
+				try {
+					select.selectByIndex(2);
+				} catch (StaleElementReferenceException e) {
+					select.selectByIndex(1);
+				}
+			}
 			driver.findElement(By.xpath("//input[@id='add_issue_button']"))
 					.click();
-			if (CommonOpt.isElementPresent(driver,
-					"//*[@id='errorExplanation']")) {
-				driver.findElement(By.xpath("//input[@id='issue_subject']"))
-						.sendKeys(name);
-				driver.findElement(
-						By.xpath("//textarea[@id='issue_description']"))
-						.sendKeys(desc);
-				driver.findElement(By.xpath("//input[@id='add_issue_button']"))
-						.click();
-			}
 			element = driver.findElement(By.xpath("//*[@id='content']/h2"));
 			Assert.assertEquals(element.getText().contains(issue + " #"), true);
 
@@ -108,17 +102,17 @@ public class NewIssuesWiki implements Runnable {
 			return;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return;
 		}
 	}
 
 	public static void main(String args[]) {
-		Runnable test1 = new NewIssuesWiki("10.241.20.87", 1000);
-		Runnable test2 = new NewIssuesWiki("192.168.145.101", 100);
-		for (int i = 0; i < 8; i++) {
+		Runnable test1 = new NewIssuesWiki("10.241.20.87");
+		Runnable test2 = new NewIssuesWiki("192.168.145.101");
+		for (int i = 0; i < 23; i++) {
 			new Thread(test1).start();
 		}
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 14; i++) {
 			new Thread(test2).start();
 		}
 	}

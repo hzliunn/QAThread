@@ -66,6 +66,7 @@ public class AddCommentsWiki implements Runnable {
 			}
 
 			// Thread.sleep(delay);
+			// 服务器申请，组内任务
 			element = driver.findElement(By.xpath("//*[@id='flash_msg']/div"));
 			Assert.assertEquals(element.getText(), "更新成功");
 
@@ -83,10 +84,10 @@ public class AddCommentsWiki implements Runnable {
 	public static void main(String args[]) {
 		Runnable test1 = new AddCommentsWiki("10.241.20.87", 1000);
 		Runnable test2 = new AddCommentsWiki("192.168.145.101", 100);
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 10; i++) {
 			new Thread(test1).start();
 		}
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 20; i++) {
 			new Thread(test2).start();
 		}
 	}

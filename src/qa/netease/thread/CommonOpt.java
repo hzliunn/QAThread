@@ -32,12 +32,9 @@ public class CommonOpt {
 	public static boolean isElementPresent(RemoteWebDriver driver, String xpath) {
 		WebElement webElement = driver.findElement(By.xpath(xpath));
 		try {
-			if (webElement.isDisplayed()) {
-				return true;
-			}
+			return webElement.isDisplayed();
 		} catch (ElementNotVisibleException e) {
 			return false;
 		}
-		return false;
 	}
 }
